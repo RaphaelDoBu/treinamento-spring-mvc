@@ -7,7 +7,8 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.cadastro.domain.User;  
+import com.cadastro.domain.User;
+import com.cadastro.domain.UserRowMapper;  
 
 
 public class UserDAO {
@@ -23,7 +24,7 @@ public class UserDAO {
 		List userList = new ArrayList(); 
 		String sql = "select * from user";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);  
-		userList = jdbcTemplate.query(sql);  
+		userList = jdbcTemplate.query(sql, new UserRowMapper());  
 		return userList;
 	}  
 
