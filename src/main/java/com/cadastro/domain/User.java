@@ -6,7 +6,7 @@ public class User {
 	private String nome;
 	private String cidade;
 	private String endereco;
-	private String cep;
+	private int cep;
 	private String profissao;
 
 
@@ -34,11 +34,11 @@ public class User {
 		this.endereco = endereco;
 	}
 
-	public String getCep() {
+	public int getCep() {
 		return cep;
 	}
 
-	public void setCep(String cep) {
+	public void setCep(int cep) {
 		 this.cep = cep;
 	
 	}

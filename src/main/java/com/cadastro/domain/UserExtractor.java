@@ -13,12 +13,13 @@ public class UserExtractor  implements ResultSetExtractor<User>{
 	  
 	  User user = new User();
 	  
-	  user.setUserId(resultSet.getInt(1));
-//	  user.setFirstName(resultSet.getString(2));
-//	  user.setLastName(resultSet.getString(3));
-//	  user.setGender(resultSet.getString(4));
-//	  user.setCity(resultSet.getString(5));
-	  
+	  user.setUserId(resultSet.getInt("userId"));
+	  user.setNome(resultSet.getString("nome"));
+	  user.setEndereco(resultSet.getString("endereco"));
+	  user.setCidade(resultSet.getString("cidade"));
+	  user.setProfissao(resultSet.getString("profissao"));
+	  user.setCep(resultSet.getInt("cep"));
+
 	  return user;
 	 }
 }
