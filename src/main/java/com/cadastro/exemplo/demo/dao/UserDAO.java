@@ -33,7 +33,7 @@ public class UserDAO {
 	public int saveUser(User e){
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-		String query="INSERT INTO users(userId,nome,cidade,endereco) values("+e.getUserId()+",'"+e.getNome()+"','"+e.getCidade()+
+		String query="INSERT INTO users(userId,nome,cidade,endereco) values(null,'"+e.getNome()+"','"+e.getCidade()+
 				"', '"+ e.getEndereco() + "')";  
 		return jdbcTemplate.update(query);  
 	}  

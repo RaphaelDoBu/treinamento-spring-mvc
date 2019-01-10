@@ -22,7 +22,7 @@ public class UserController {
 	
 	@RequestMapping(value="/list", method= RequestMethod.GET )
 	public ModelAndView list(){
-		ModelAndView model = new ModelAndView("user_form");
+		ModelAndView model = new ModelAndView("user_form_bst");
 		
 		List<User> list = userService.getUserList();
 		model.addObject("users", list);
@@ -51,7 +51,6 @@ public class UserController {
 	@RequestMapping(value="/save", method= RequestMethod.POST )
 	public ModelAndView saveUser(@ModelAttribute("user") User user){
 
-		user.setUserId(3);
 		userService.saveUser(user);
 	
 		return new ModelAndView("redirect:/user/list");

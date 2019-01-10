@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Spring Framework Guru JdbcTemplate, Thymeleaf, JPA Example</title>
+<title>Cadastro de Usuários</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,7 +15,7 @@ table, th, td {
 </head>
 <body>
 		<div>
-			<h2>Current Dogs In Rescue</h2>
+			<h2>Lista de usuários</h2>
 			<table>
 				<thead>
 					<tr>
@@ -44,7 +44,7 @@ table, th, td {
 		</div>
 	</form>
 	<div>
-		<h2>Adicionar usuario</h2>
+		<h2>Adicionar usuário</h2>
 		<form action="/user/save" th:action="@{/user/save}" th:object="${user}" method="post">
 			<label>Nome<input type="text" name="nome" id="nome"></input></label>
 			<label>Cidade<input type="text" name="cidade" id="cidade"></input></label>
