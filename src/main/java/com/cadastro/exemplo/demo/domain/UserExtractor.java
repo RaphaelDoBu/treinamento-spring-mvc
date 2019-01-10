@@ -1,4 +1,4 @@
-package com.cadastro.domain;
+package com.cadastro.exemplo.demo.domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +17,8 @@ public class UserExtractor  implements ResultSetExtractor<User>{
 	  user.setNome(resultSet.getString("nome"));
 	  user.setEndereco(resultSet.getString("endereco"));
 	  user.setCidade(resultSet.getString("cidade"));
-	  user.setProfissao(resultSet.getString("profissao"));
-	  user.setCep(resultSet.getInt("cep"));
+//	  user.setProfissao(resultSet.getString("profissao"));
+//	  user.setCep(resultSet.getInt("cep"));
 
 	  return user;
 	 }

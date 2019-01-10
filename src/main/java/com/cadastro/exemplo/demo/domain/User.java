@@ -1,4 +1,4 @@
-package com.cadastro.domain;
+package com.cadastro.exemplo.demo.domain;
 
 public class User {
 

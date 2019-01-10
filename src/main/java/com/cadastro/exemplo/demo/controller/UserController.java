@@ -1,16 +1,17 @@
-package com.cadastro.controller;
+package com.cadastro.exemplo.demo.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.cadastro.domain.User;
-import com.cadastro.service.UserService;
+import com.cadastro.exemplo.demo.domain.User;
+import com.cadastro.exemplo.demo.service.UserService;
 
 @Controller
 @RequestMapping(value="/user")
@@ -21,17 +22,16 @@ public class UserController {
 	
 	@RequestMapping(value="/list", method= RequestMethod.GET )
 	public ModelAndView list(){
-		ModelAndView model = new ModelAndView("user_page");
+		ModelAndView model = new ModelAndView("user_form");
 		
 		List<User> list = userService.getUserList();
-		model.addObject("listUser", list);
+		model.addObject("users", list);
 		
 		return model;
 	}
 	
 	@RequestMapping(value="/add-user", method= RequestMethod.GET )
 	public ModelAndView addUser(){
-		System.out.println("Aq");
 		ModelAndView model = new ModelAndView("user_form");
 				
 		User user = new User();
@@ -51,23 +51,19 @@ public class UserController {
 	}
 
 	@RequestMapping(value="/save", method= RequestMethod.POST )
-	public ModelAndView saveUser(@PathVariable("userform") User user){
+	public ModelAndView saveUser(@ModelAttribute("user") User user){
+
+		user.setUserId(3);
+		userService.saveUser(user);
 	
-		if(user!= null){
-			userService.updateUser(user);
-		}
-		else{
-			userService.saveUser(user);
-		}
-		
-		return new ModelAndView("redirect:/list");
+		return new ModelAndView("redirect:/user/list");
 	}
 	
-	@RequestMapping(value="/delete/{id}", method= RequestMethod.DELETE)
+	@RequestMapping(value="/delete/{id}", method= RequestMethod.GET)
 	public ModelAndView deleteUser(@PathVariable("id") int id){
 		
 		userService.deleteUser(id);
 		
-		return new ModelAndView("redirect:/list");
+		return new ModelAndView("redirect:/user/list");
 	}
 }
