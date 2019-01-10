@@ -32,7 +32,7 @@ public class UserController {
 
 	@RequestMapping(value="/update/{id}", method= RequestMethod.GET )
 	public ModelAndView updateUser(@PathVariable("id") int id){
-		ModelAndView model = new ModelAndView("user_edit");
+		ModelAndView model = new ModelAndView("user_edit_bst");
 		
 		User user = userService.findUserById(id);
 		model.addObject("user", user);
