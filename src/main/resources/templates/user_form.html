@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- META SECTION -->
 <title>Spring Framework Guru JdbcTemplate, Thymeleaf, JPA Example</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<!-- END META SECTION -->
-<!--  BEGIN STYLE -->
 <style>
 table, th, td {
     border: 1px solid black;
     padding: 1px;
 }
 </style>
-<!--  END STYLE -->
 
 </head>
 <body>
@@ -48,22 +44,14 @@ table, th, td {
 		</div>
 	</form>
 	<div>
-	<h2>Adicionar usuario</h2>
-	<form action="/user/save" th:action="@{/user/save}" th:object="${user}" method="post">
-		<label>Nome<input type="text" name="nome" id="nome"></input></label>
-		<label>Cidade<input type="text" name="cidade" id="cidade"></input></label>
-		<label>Endereço<input type="text" name="endereco" id="endereco"></input></label>
-		<input type="submit" value="Submit"></input>
-	</form>
-	</div>
-		<!-- <div>
-		<h2>Delete A Dog</h2>
-		<form action="/delete" th:action="@{/delete}" method="post">
-		<label>Name<input type="text" name="name" id="name"></input></label>
-		<label>ID<input type="text" name="id" id="id"></input></label>
-		<input type="submit" value="Submit"></input>
+		<h2>Adicionar usuario</h2>
+		<form action="/user/save" th:action="@{/user/save}" th:object="${user}" method="post">
+			<label>Nome<input type="text" name="nome" id="nome"></input></label>
+			<label>Cidade<input type="text" name="cidade" id="cidade"></input></label>
+			<label>Endereço<input type="text" name="endereco" id="endereco"></input></label>
+			<input type="submit" value="Submit"></input>
 		</form>
-		</div> -->
+	</div>
 	<div>
 	</div>
 </body>

@@ -29,26 +29,24 @@ public class UserController {
 		
 		return model;
 	}
-	
-	@RequestMapping(value="/add-user", method= RequestMethod.GET )
-	public ModelAndView addUser(){
-		ModelAndView model = new ModelAndView("user_form");
-				
-		User user = new User();
-		model.addObject("userform", user);
-		
-		return model;
-	}
-	
-	@RequestMapping(value="/update/{id}", method= RequestMethod.PUT )
+
+	@RequestMapping(value="/update/{id}", method= RequestMethod.GET )
 	public ModelAndView updateUser(@PathVariable("id") int id){
-		ModelAndView model = new ModelAndView("user/user_form");
+		ModelAndView model = new ModelAndView("user_edit");
 		
 		User user = userService.findUserById(id);
-		model.addObject("userform", user);
+		model.addObject("user", user);
 		
 		return model;
 	}
+	
+	@RequestMapping(value="/editUser", method= RequestMethod.POST )
+	public ModelAndView editUser(@ModelAttribute("user") User user){
+		userService.updateUser(user);
+		
+		return new ModelAndView("redirect:/user/list");
+	}
+
 
 	@RequestMapping(value="/save", method= RequestMethod.POST )
 	public ModelAndView saveUser(@ModelAttribute("user") User user){
