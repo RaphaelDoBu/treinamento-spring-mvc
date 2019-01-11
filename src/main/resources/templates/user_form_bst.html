@@ -1,75 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Cadastro de Usuário</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<style>
-	.container {
-        position:absolute;
-		left:25%;
-		top:25%;
-		margin-left:-110px;
-		margin-top:-40px;
-     }
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
-</style>  
-</head>
- 
-<body>
-<div class="container" >
-	<h1>Lista de Usuários</h1>
-	<div class="row col-md-7 table-responsive">
-		<table id="customerTable" class="table">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Nome</th>
-					<th>Cidade</th>
-					<th>Endereço</th>
-				</tr>
-			</thead>
-			<tbody>
-				 <tr th:each="user, rowStat: ${users}"
-				 	 th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
-			        <td th:text="${user.userId}"></td>
-					<td th:text="${user.nome}"></td>
-			        <td th:text="${user.cidade}"></td>
-			        <td th:text="${user.endereco}"></td>
-			        <td>
-						<div class="btn-group pull-right">
-							<a class="btn btn-sm btn-primary" th:href="@{/user/update/{id}(id=${user.userId})}" >Editar</a>
-							<a class="delete btn btn-sm btn-danger" th:href="@{/user/delete/{id}(id=${user.userId})}">Excluir</a>
-						</div>
-					</td>
-			    </tr>
-			</tbody>
-		</table>
-	</div>
-	<body class="container">
-		<h1>Adicionar Usuário</h1>
-		<div class="row">
-			<div class="col-md-4">
-			    <form action="/user/save" th:action="@{/user/save}" th:object="${user}" method="post">
-			    	<div class="form-group">
-				        <label for="name">Nome:</label>
-				        <input type="text" class="form-control" placeholder="Nome" id="nome" name="nome"/>
-				    </div>
-			    	<div class="form-group">
-				        <label for="age">Cidade:</label>
-				        <input type="text" class="form-control" placeholder="Cidade" id="cidade" name="cidade"/>
-				    </div>	
-			    	<div class="form-group">
-				        <label for="street">Endereço:</label>
-				        <input type="text" class="form-control" placeholder="Endereço" id="endereco" name="endereco"/>
-				    </div>
-			    	<button type="submit" class="btn btn-primary">Submit</button>
-			    </form>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cadastro de Usuários</title>
+
+    <!-- Bootstrap core CSS-->
+    <link th:href="@{../vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link th:href="@{../vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link th:href="@{../vendor/datatables/dataTables.bootstrap4.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link th:href="@{../css/sb-admin.css}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Lista de Usuários
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Nome</th>
+                      <th>Cidade</th>
+                      <th>Endereço</th>
+                      <th>Editar</th>
+                      <th>Excluir</th>
+                    </tr>
+                  </thead>
+                  
+                  <tbody>
+	                 <tr th:each="user, rowStat: ${users}"
+					 	 th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+				        <td th:text="${user.userId}"></td>
+						<td th:text="${user.nome}"></td>
+				        <td th:text="${user.cidade}"></td>
+				        <td th:text="${user.endereco}"></td>
+				        <td>
+							<div class="btn-group pull-right">
+								<a class="btn btn-sm btn-primary" th:href="@{/user/update/{id}(id=${user.userId})}" >Editar</a>
+							</div>
+						</td>
+						<td>
+							<div class="btn-group pull-right">
+								<a class="delete btn btn-sm btn-danger" th:href="@{/user/delete/{id}(id=${user.userId})}">Excluir</a>
+							</div>
+						</td>
+				    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <body class="container">
+			<h1>Adicionar Usuário</h1>
+			<div class="row">
+				<div class="col-md-4">
+				    <form action="/user/save" th:action="@{/user/save}" th:object="${user}" method="post">
+				    	<div class="form-group">
+					        <label for="name">Nome:</label>
+					        <input type="text" class="form-control" placeholder="Nome" id="nome" name="nome"/>
+					    </div>
+				    	<div class="form-group">
+					        <label for="age">Cidade:</label>
+					        <input type="text" class="form-control" placeholder="Cidade" id="cidade" name="cidade"/>
+					    </div>	
+				    	<div class="form-group">
+					        <label for="street">Endereço:</label>
+					        <input type="text" class="form-control" placeholder="Endereço" id="endereco" name="endereco"/>
+					    </div>
+				    	<button type="submit" class="btn btn-primary">Submit</button>
+				    </form>
+			    </div>
 		    </div>
-	    </div>
-	</body>
-</div>
+		</body>
+      </div>
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script th:src="@{../vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{../vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script th:src="@{../vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+    <!-- Page level plugin JavaScript-->
+    <script th:src="@{../vendor/datatables/jquery.dataTables.js}"></script>
+    <script th:src="@{../vendor/datatables/dataTables.bootstrap4.js}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script th:src="@{../js/sb-admin.min.js}"></script>
+
+    <!-- Demo scripts for this page-->
+    <script th:src="@{../js/demo/datatables-demo.js}"></script>
+
+  </body>
+
+</html>

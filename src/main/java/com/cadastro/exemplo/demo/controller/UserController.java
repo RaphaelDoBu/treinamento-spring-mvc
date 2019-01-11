@@ -35,23 +35,29 @@ public class UserController {
 		ModelAndView model = new ModelAndView("user_edit_bst");
 		
 		User user = userService.findUserById(id);
-		model.addObject("user", user);
-		
+		if(user != null) {
+			model.addObject("user", user);
+		}
 		return model;
 	}
 	
 	@RequestMapping(value="/editUser", method= RequestMethod.POST )
 	public ModelAndView editUser(@ModelAttribute("user") User user){
-		userService.updateUser(user);
 		
+		if( user.getNome() != null ) {
+			userService.updateUser(user);
+
+		}
 		return new ModelAndView("redirect:/user/list");
 	}
 
 
 	@RequestMapping(value="/save", method= RequestMethod.POST )
 	public ModelAndView saveUser(@ModelAttribute("user") User user){
-
-		userService.saveUser(user);
+		
+		if(user != null) {
+			userService.saveUser(user);
+		}
 	
 		return new ModelAndView("redirect:/user/list");
 	}

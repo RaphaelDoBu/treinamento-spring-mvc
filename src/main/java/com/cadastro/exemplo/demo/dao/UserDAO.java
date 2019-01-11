@@ -40,8 +40,8 @@ public class UserDAO {
 	public int updateUser(User e){
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-		String query="UPDATE users SET nome=' "+e.getNome() +" "
-				+ "',cidade='"+e.getCidade()+"' where userId='"+e.getUserId()+"' ";  
+		String query="UPDATE users SET nome='"+e.getNome() +" "
+				+ "',cidade='" + e.getCidade() + "',endereco='" + e.getEndereco() + "'where userId='"+e.getUserId()+"' ";  
 		return jdbcTemplate.update(query);  
 	}  
 	public int deleteUser(int id){
