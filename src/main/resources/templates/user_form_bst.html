@@ -24,14 +24,51 @@
     <!-- Custom styles for this template-->
     <link th:href="@{../css/sb-admin.css}" rel="stylesheet">
 
-  </head>
+<style>
+	.add-user {
+		width: 40%;
+        float: left;
+		
+     }
+     body{
+     	margin-left: 2%;
+     	margin-right: 2%;
+     	margin-top: 5%
+     }
+</style> 
 
-  <body id="page-top">
+</head>
+<body>
       <div id="content-wrapper">
-
+		 <div class="container add-user">
+					<h1>Adicionar Usuário</h1>
+					<div class="row">
+						<div class="col-md-10">
+						    <form action="/user/save" th:action="@{/user/save}" th:object="${user}" method="post">
+						    	<div class="form-group">
+							        <label for="name">Nome:</label>
+							        <input type="text" class="form-control" placeholder="Nome" id="nome" name="nome"/>
+							    </div>
+						    	<div class="form-group">
+							        <label for="age">Cidade:</label>
+							        <input type="text" class="form-control" placeholder="Cidade" id="cidade" name="cidade"/>
+							    </div>	
+						    	<div class="form-group">
+							        <label for="street">Endereço:</label>
+							        <input type="text" class="form-control" placeholder="Endereço" id="endereco" name="endereco"/>
+							    </div>
+						    	<button type="submit" class="btn btn-primary">Submit</button>
+						    </form>
+					    </div>
+				    </div>
+			</div>
+		</div>
+  		<div id="page-top">
+  
+ 	 
         <div class="container-fluid">
           <!-- DataTables Example -->
-          <div class="card mb-3">
+          <div class="card mb-7">
             <div class="card-header">
               <i class="fas fa-table"></i>
               Lista de Usuários
@@ -74,32 +111,10 @@
             </div>
           </div>
         </div>
-        
-        <body class="container">
-			<h1>Adicionar Usuário</h1>
-			<div class="row">
-				<div class="col-md-4">
-				    <form action="/user/save" th:action="@{/user/save}" th:object="${user}" method="post">
-				    	<div class="form-group">
-					        <label for="name">Nome:</label>
-					        <input type="text" class="form-control" placeholder="Nome" id="nome" name="nome"/>
-					    </div>
-				    	<div class="form-group">
-					        <label for="age">Cidade:</label>
-					        <input type="text" class="form-control" placeholder="Cidade" id="cidade" name="cidade"/>
-					    </div>	
-				    	<div class="form-group">
-					        <label for="street">Endereço:</label>
-					        <input type="text" class="form-control" placeholder="Endereço" id="endereco" name="endereco"/>
-					    </div>
-				    	<button type="submit" class="btn btn-primary">Submit</button>
-				    </form>
-			    </div>
-		    </div>
-		</body>
       </div>
-    </div>
+      
 
+    
 
 
     <!-- Bootstrap core JavaScript-->
