@@ -62,6 +62,13 @@ public class UserController {
 		return new ModelAndView("redirect:/user/list");
 	}
 	
+	@RequestMapping(value="/add-user", method= RequestMethod.GET )
+	public ModelAndView addUser(){
+		ModelAndView model = new ModelAndView("add_user");
+		
+		return model;
+	}
+	
 	@RequestMapping(value="/delete/{id}", method= RequestMethod.GET)
 	public ModelAndView deleteUser(@PathVariable("id") int id){
 		
